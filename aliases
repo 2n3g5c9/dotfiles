@@ -1,0 +1,3 @@
+# NeoVim by default
+alias vim="nvim"
+alias vi="nvim"
