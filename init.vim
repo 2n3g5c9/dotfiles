@@ -62,6 +62,9 @@ Plug 'fatih/vim-go'
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'nvie/vim-flake8'
 
+"Terraform
+Plug 'hashivim/vim-terraform'
+
 call plug#end()
 
 "Theme
