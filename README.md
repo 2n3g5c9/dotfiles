@@ -13,7 +13,7 @@
 Clone the repository, install base software with Homebrew and configure them with the bootstrap script.
 
 ```bash
-git clone https://github.com/mathiasbynens/dotfiles.git && cd dotfiles
+git clone https://github.com/2n3g5c9/dotfiles.git && cd dotfiles
 ./brew.sh
 ./bootstrap.sh
 ```
