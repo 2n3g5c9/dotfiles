@@ -6,15 +6,14 @@
 
 ## Installation
 
-**Warning:** These dotfiles are the ones I use from time to time, they are not guaranteed to work 100%. 
+> **⚠️ Warning:** These dotfiles are the ones I use from time to time, they are not guaranteed to work 100% as the `bootstrap.sh` script is not idempotent.
 
 ### Using Git and the bootstrap script
 
-Clone the repository, install base software with Homebrew and configure them with the bootstrap script.
+Clone the repository and execute the `bootstrap.sh` script.
 
 ```bash
 git clone https://github.com/2n3g5c9/dotfiles.git && cd dotfiles
-./brew.sh
 ./bootstrap.sh
 ```
 

@@ -1,2 +1,8 @@
 # macOS specific files
 .DS_Store
+
+# Jetbrains specific directory
+.idea/
+
+# Brew lock file
+Brewfile.lock.json
