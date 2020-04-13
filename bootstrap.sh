@@ -6,6 +6,9 @@ brew-installs() {
 
   echo " ==> Installing software with Homebrew"
   brew bundle
+
+  echo " ==> Cleaning up Homebrew installs"
+  brew cleanup
 }
 
 additional-installs() {
