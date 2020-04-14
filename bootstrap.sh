@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 brew-installs() {
-  command -v brew >/dev/null 2>&1 || { echo >&2 " ==> Installing Homebrew"; \
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
+	command -v brew >/dev/null 2>&1 || { echo >&2 " ==> Installing Homebrew"; \
+    	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
 
-  echo " ==> Installing software with Homebrew"
-  brew bundle
+  	echo " ==> Installing software with Homebrew"
+  	brew bundle
 
-  echo " ==> Cleaning up Homebrew installs"
-  brew cleanup
+  	echo " ==> Cleaning up Homebrew installs"
+  	brew cleanup
 }
 
 additional-installs() {
@@ -38,7 +38,7 @@ pip-installs() {
 }
 
 copy-dotfiles() {
-  echo " ==> Copying dotfiles"
+	echo " ==> Copying dotfiles"
 
 	cp zshrc "${HOME}/.zshrc"
 	cp aliases "${HOME}/.aliases"
@@ -51,17 +51,17 @@ copy-dotfiles() {
 }
 
 do-it() {
-  # Brew installs.
-  brew-installs
+	# Brew installs.
+	brew-installs
 
-  # Additional installs.
-  additional-installs
+	# Additional installs.
+	additional-installs
 
 	# Python modules installs.
 	pip-installs
 
-  # Copy dotfiles in appropriate directories.
-  copy-dotfiles
+	# Copy dotfiles in appropriate directories.
+	copy-dotfiles
 }
 
 if [ "$1" == "--force" ] || [ "$1" == "-f" ]; then
