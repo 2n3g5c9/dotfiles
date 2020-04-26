@@ -49,3 +49,6 @@ alias tfay="terraform apply -auto-approve"
 alias tfdy="terraform destroy -auto-approve"
 alias tfinu="terraform init -upgrade"
 alias tfpd="terraform plan --destroy"
+
+# Utilities
+alias pping="prettyping"
