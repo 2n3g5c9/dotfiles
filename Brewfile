@@ -43,6 +43,7 @@ brew "thefuck"
 brew "tldr"
 
 # Development
+brew "dive"
 brew "git"
 brew "git-lfs"
 brew "go"
