@@ -40,6 +40,7 @@ brew "prettyping"
 brew "ripgrep"
 brew "the_silver_searcher"
 brew "tldr"
+brew "z"
 
 # Development
 brew "git"
