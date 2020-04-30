@@ -42,6 +42,7 @@ copy-dotfiles() {
 
 	cp zshrc "${HOME}/.zshrc"
 	cp aliases "${HOME}/.aliases"
+	cp kubectl_aliases "${HOME}/.kubectl_aliases"
 
 	cp tmux.conf "${HOME}/.tmux.conf"
 	cp tmux.conf.local "${HOME}/.tmux.conf.local"
