@@ -98,6 +98,7 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Aliases
 [ -f $HOME/.aliases ] && source $HOME/.aliases
 [ -f $HOME/.kubectl_aliases ] && source $HOME/.kubectl_aliases
+eval $(thefuck --alias)
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
