@@ -67,7 +67,8 @@ plugins=(
   git
   zsh-syntax-highlighting
   zsh-autosuggestions
-  )
+  z
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,7 +108,7 @@ export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 # Kubernetes
-function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
+#function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
 source <(kubectl completion zsh)
 complete -F __start_kubectl k
 
