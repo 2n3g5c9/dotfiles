@@ -48,8 +48,14 @@ copy-dotfiles() {
 	cp tmux.conf "${HOME}/.tmux.conf"
 	cp tmux.conf.local "${HOME}/.tmux.conf.local"
 
+	cp gitaliases.txt "${HOME}/.gitaliases.txt"
+	cp gitconfig "${HOME}/.gitconfig"
+	
 	mkdir -p "${HOME}/.config/nvim"
 	cp init.vim "${HOME}/.config/nvim/init.vim"
+
+	mkdir -p "${HOME}/.config/ranger"
+	cp rc.conf "${HOME}/.config/ranger/rc.conf"
 }
 
 do-it() {

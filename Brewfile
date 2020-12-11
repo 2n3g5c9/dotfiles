@@ -21,6 +21,7 @@ brew "ack"
 brew "gawk"
 brew "grep"
 brew "openssh"
+brew "ranger"
 brew "tree"
 brew "wget"
 

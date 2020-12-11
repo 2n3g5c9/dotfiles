@@ -1,18 +1,23 @@
+# General
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+export VISUAL=nvim
+export EDITOR=nvim
 
 export ZSH="$HOME/.oh-my-zsh"
 
 export TERM="screen-256color"
 ZSH_THEME="spaceship"
 
+source $ZSH/oh-my-zsh.sh
+
+# Plugins
 plugins=(
   git
   zsh-syntax-highlighting
   zsh-autosuggestions
   z
 )
-
-source $ZSH/oh-my-zsh.sh
 
 # Aliases
 [ -f $HOME/.aliases ] && source $HOME/.aliases
@@ -30,8 +35,8 @@ export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 # Kubernetes
 #function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
-source <(kubectl completion zsh)
-complete -F __start_kubectl k
+#source <(kubectl completion zsh)
+#complete -F __start_kubectl k
 
 # The Fuck
 eval $(thefuck --alias)
