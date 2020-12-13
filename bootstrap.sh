@@ -17,13 +17,6 @@ additional-installs() {
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 	fi
 
-	ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom"
-	if [ ! -d "${ZSH_CUSTOM}/themes/spaceship-prompt" ]; then
-		echo " ==> Installing Spaceship ZSH"
-		git clone https://github.com/denysdovhan/spaceship-prompt.git "${ZSH_CUSTOM}/themes/spaceship-prompt"
-		ln -s "${ZSH_CUSTOM}/themes/spaceship-prompt/spaceship.zsh-theme" "${ZSH_CUSTOM}/themes/spaceship.zsh-theme"
-	fi
-
 	VIM_PLUG="${HOME}/.config/nvim/autoload/plug.vim"
 	if [ ! -f "${VIM_PLUG}" ]; then
 		echo " ==> Installing vim-plug"
@@ -41,21 +34,20 @@ pip-installs() {
 copy-dotfiles() {
 	echo " ==> Copying dotfiles"
 
-	cp zshrc "${HOME}/.zshrc"
-	cp aliases "${HOME}/.aliases"
-	cp kubectl_aliases "${HOME}/.kubectl_aliases"
+	cp config/zsh/zshrc "${HOME}/.zshrc"
+	cp config/aliases/aliases "${HOME}/.aliases"
+	cp config/aliases/aliases_kubectl "${HOME}/.aliases_kubectl"
 
-	cp tmux.conf "${HOME}/.tmux.conf"
-	cp tmux.conf.local "${HOME}/.tmux.conf.local"
+	cp config/tmux/tmux.conf "${HOME}/.tmux.conf"
 
-	cp gitaliases.txt "${HOME}/.gitaliases.txt"
-	cp gitconfig "${HOME}/.gitconfig"
+	cp config/git/gitaliases.txt "${HOME}/.gitaliases.txt"
+	cp config/git/gitconfig "${HOME}/.gitconfig"
 	
 	mkdir -p "${HOME}/.config/nvim"
-	cp init.vim "${HOME}/.config/nvim/init.vim"
+	cp config/vim/init.vim "${HOME}/.config/nvim/init.vim"
 
 	mkdir -p "${HOME}/.config/ranger"
-	cp rc.conf "${HOME}/.config/ranger/rc.conf"
+	cp config/ranger/rc.conf "${HOME}/.config/ranger/rc.conf"
 }
 
 do-it() {

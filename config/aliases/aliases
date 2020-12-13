@@ -1,9 +1,10 @@
 # NeoVim by default
 alias vim="nvim"
 alias vi="nvim"
+alias v="nvim"
 
 # Tmux
-alias tx="tmux"
+alias t="tmux"
 
 # Exa
 alias ls="exa"
