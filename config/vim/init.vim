@@ -57,8 +57,10 @@ nnoremap <leader>r :Ranger<CR>
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 set timeoutlen=500
 "fzf and rg
-nnoremap ; :Files<CR>
-nnoremap \ :Rg<CR>
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-g> :GFiles<CR>
+nnoremap <silent> <C-o> :Buffers<CR>
+nnoremap <C-f> :Rg<Space>
 "git
 nnoremap <leader>ga :G add %:p<CR><CR>
 nnoremap <leader>gs :Gstatus<CR>
