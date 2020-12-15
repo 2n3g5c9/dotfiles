@@ -3,6 +3,9 @@ alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
 
+# Ranger
+alias r="ranger"
+
 # Tmux
 alias t="tmux"
 

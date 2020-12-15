@@ -16,9 +16,3 @@ Clone the repository and execute the `bootstrap.sh` script.
 git clone https://github.com/2n3g5c9/dotfiles.git && cd dotfiles
 ./bootstrap.sh
 ```
-
-## Thanks to...
-
-* **Denys Dovhan** for his ZSH configuration: [https://github.com/denysdovhan/spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt)
-* **Gregory Pakosz** for his tmux configuration: [https://github.com/gpakosz/.tmux](https://github.com/gpakosz/.tmux)
-

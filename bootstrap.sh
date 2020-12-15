@@ -23,6 +23,11 @@ additional-installs() {
 		curl -fLo "${VIM_PLUG}" --create-dirs \
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	fi
+
+	if [ ! -d "${HOME}/.config/ranger/plugins/ranger_devicons" ]; then
+		echo " ==> Installing Ranger devicons"
+		git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+	fi
 }
 
 pip-installs() {
@@ -44,7 +49,7 @@ copy-dotfiles() {
 	cp config/git/gitconfig "${HOME}/.gitconfig"
 	
 	mkdir -p "${HOME}/.config/nvim"
-	cp config/vim/init.vim "${HOME}/.config/nvim/init.vim"
+	cp -r config/nvim/* "${HOME}/.config/nvim/"
 
 	mkdir -p "${HOME}/.config/ranger"
 	cp config/ranger/rc.conf "${HOME}/.config/ranger/rc.conf"
