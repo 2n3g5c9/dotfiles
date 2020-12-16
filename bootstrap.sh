@@ -47,7 +47,10 @@ copy-dotfiles() {
 
 	cp config/git/gitaliases.txt "${HOME}/.gitaliases.txt"
 	cp config/git/gitconfig "${HOME}/.gitconfig"
-	
+
+	mkdir -p "${HOME}/.config/alacritty"
+	cp config/alacritty/alacritty.yml "${HOME}/.config/alacritty/alacritty.yml"
+
 	mkdir -p "${HOME}/.config/nvim"
 	cp -r config/nvim/* "${HOME}/.config/nvim/"
 
