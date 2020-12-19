@@ -2,13 +2,13 @@
 
 brew-installs() {
 	command -v brew >/dev/null 2>&1 || { echo >&2 " ==> Installing Homebrew"; \
-    	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
+		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
 
-  	echo " ==> Installing software with Homebrew"
-  	brew bundle
+	echo " ==> Installing software with Homebrew"
+	brew bundle
 
-  	echo " ==> Cleaning up Homebrew installs"
-  	brew cleanup
+	echo " ==> Cleaning up Homebrew installs"
+	brew cleanup
 }
 
 additional-installs() {

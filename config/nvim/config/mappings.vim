@@ -21,7 +21,7 @@ let mapleader = " "
 	nnoremap <leader>H :vertical resize -5<CR>
 	nnoremap <leader>J :resize +5<CR>
 	nnoremap <leader>K :resize -5<CR>
-	
+
 	" Buffers
 	nmap <C-o> :Buffers<CR>
 "}}}

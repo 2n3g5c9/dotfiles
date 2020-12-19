@@ -6,20 +6,20 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	" Operations on brackets, parens, quotes in pair
 	Plug 'jiangmiao/auto-pairs'
-	
+
 	" Fuzzy finder
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
-	
+
 	" Available keybindings in popup
 	Plug 'liuchengxu/vim-which-key'
 
 	" Different level of parentheses in different colors
 	Plug 'luochen1990/rainbow'
-	
+
 	" Tags of the current file
 	Plug 'majutsushi/tagbar'
-	
+
 	" Useful start screen
 	Plug 'mhinz/vim-startify'
 
@@ -28,52 +28,52 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	" Fast color highlighter
 	Plug 'norcalli/nvim-colorizer.lua'
-	
+
 	" Nice and smooth scrolling
 	Plug 'psliwka/vim-smoothie'
-	
+
 	" File system explorer
 	Plug 'preservim/nerdtree'
-	
+
 	" Comment functions
 	Plug 'preservim/nerdcommenter'
 	let NERDSpaceDelims = 1
-	
+
 	" File icons all around vim
 	Plug 'ryanoasis/vim-devicons'
-	
+
 	" Syntax highlighter for NERDtree
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-	
+
 	" Handy features for surroundings
 	Plug 'tpope/vim-surround'
-	
+
 	" Lean status/tabline
 	Plug 'vim-airline/vim-airline'
-	
+
 	" Syntax checking hacks
 	Plug 'vim-syntastic/syntastic'
-	
+
 	" Additional text objects
 	Plug 'wellle/targets.vim'
 "}}}
 
 " Infrastructure {{{
-	"Ansible
+	" Ansible
 	Plug 'pearofducks/ansible-vim'
 
-	"Docker
+	" Docker
 	Plug 'deoplete-plugins/deoplete-docker'
 	Plug 'ekalinin/dockerfile.vim'
 
-	"Git
+	" Git
 	Plug 'tpope/vim-fugitive'
 	Plug 'airblade/vim-gitgutter'
 
-	"Packer
+	" Packer
 	Plug 'hashivim/vim-packer'
 
-	"Terraform
+	" Terraform
 	Plug 'hashivim/vim-terraform'
 	Plug 'juliosueiras/vim-terraform-completion'
 	let g:terraform_fmt_on_save=1
@@ -81,7 +81,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 "}}}
 
 " Development {{{
-	"Deoplete
+	" Deoplete
 	if has('nvim')
 	  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	else
@@ -91,21 +91,27 @@ call plug#begin('~/.local/share/nvim/plugged')
 	endif
 	let g:deoplete#enable_at_startup = 1
 
-	"Go
+	" Go
 	Plug 'deoplete-plugins/deoplete-go'
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 	let g:go_def_mode='gopls'
 	let g:go_info_mode='gopls'
 
-	"Javascript
-	Plug 'pangloss/vim-javascript'
+	" Javascript
+	Plug 'pangloss/vim-javascript'    " JavaScript support
+	Plug 'leafgarland/typescript-vim' " TypeScript syntax
+	Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+	Plug 'jparise/vim-graphql'        " GraphQL syntax
 
-	"Python
+	"Prettier
+	Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+	" Python
 	Plug 'davidhalter/jedi-vim'
 	Plug 'deoplete-plugins/deoplete-jedi'
 	Plug 'nvie/vim-flake8'
-	
-	"TabNine
+
+	" TabNine
 	Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 "}}}
 
