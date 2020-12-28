@@ -46,6 +46,7 @@ brew "tldr"
 brew "z"
 
 # Development
+brew "ctags-exuberant"
 brew "dive"
 brew "git"
 brew "git-lfs"
