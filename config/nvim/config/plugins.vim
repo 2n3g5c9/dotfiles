@@ -1,118 +1,121 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " General {{{
-	" Color scheme
-	Plug 'gruvbox-community/gruvbox'
+    " Color scheme
+    Plug 'gruvbox-community/gruvbox'
 
-	" Operations on brackets, parens, quotes in pair
-	Plug 'jiangmiao/auto-pairs'
+    " Operations on brackets, parens, quotes in pair
+    Plug 'jiangmiao/auto-pairs'
 
-	" Fuzzy finder
-	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-	Plug 'junegunn/fzf.vim'
+    " Fuzzy finder
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
 
-	" Available keybindings in popup
-	Plug 'liuchengxu/vim-which-key'
+    " Jump on multiple characters
+    Plug 'justinmk/vim-sneak'
 
-	" Different level of parentheses in different colors
-	Plug 'luochen1990/rainbow'
+    " Available keybindings in popup
+    Plug 'liuchengxu/vim-which-key'
 
-	" Tags of the current file
-	Plug 'majutsushi/tagbar'
+    " Different level of parentheses in different colors
+    Plug 'luochen1990/rainbow'
 
-	" Useful start screen
-	Plug 'mhinz/vim-startify'
+    " Tags of the current file
+    Plug 'majutsushi/tagbar'
 
-	" Asynchronously run programs
-	Plug 'neomake/neomake'
+    " Useful start screen
+    Plug 'mhinz/vim-startify'
 
-	" Fast color highlighter
-	Plug 'norcalli/nvim-colorizer.lua'
+    " Asynchronously run programs
+    Plug 'neomake/neomake'
 
-	" Nice and smooth scrolling
-	Plug 'psliwka/vim-smoothie'
+    " Fast color highlighter
+    Plug 'norcalli/nvim-colorizer.lua'
 
-	" File system explorer
-	Plug 'preservim/nerdtree'
+    " Nice and smooth scrolling
+    Plug 'psliwka/vim-smoothie'
 
-	" Comment functions
-	Plug 'preservim/nerdcommenter'
-	let NERDSpaceDelims = 1
+    " File system explorer
+    Plug 'preservim/nerdtree'
 
-	" File icons all around vim
-	Plug 'ryanoasis/vim-devicons'
+    " Comment functions
+    Plug 'preservim/nerdcommenter'
+    let NERDSpaceDelims = 1
 
-	" Syntax highlighter for NERDtree
-	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    " File icons all around vim
+    Plug 'ryanoasis/vim-devicons'
 
-	" Handy features for surroundings
-	Plug 'tpope/vim-surround'
+    " Syntax highlighter for NERDtree
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-	" Lean status/tabline
-	Plug 'vim-airline/vim-airline'
+    " Handy features for surroundings
+    Plug 'tpope/vim-surround'
 
-	" Syntax checking hacks
-	Plug 'vim-syntastic/syntastic'
+    " Lean status/tabline
+    Plug 'vim-airline/vim-airline'
 
-	" Additional text objects
-	Plug 'wellle/targets.vim'
+    " Syntax checking hacks
+    Plug 'vim-syntastic/syntastic'
+
+    " Additional text objects
+    Plug 'wellle/targets.vim'
 "}}}
 
 " Infrastructure {{{
-	" Ansible
-	Plug 'pearofducks/ansible-vim'
+    " Ansible
+    Plug 'pearofducks/ansible-vim'
 
-	" Docker
-	Plug 'deoplete-plugins/deoplete-docker'
-	Plug 'ekalinin/dockerfile.vim'
+    " Docker
+    Plug 'deoplete-plugins/deoplete-docker'
+    Plug 'ekalinin/dockerfile.vim'
 
-	" Git
-	Plug 'tpope/vim-fugitive'
-	Plug 'airblade/vim-gitgutter'
+    " Git
+    Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
 
-	" Packer
-	Plug 'hashivim/vim-packer'
+    " Packer
+    Plug 'hashivim/vim-packer'
 
-	" Terraform
-	Plug 'hashivim/vim-terraform'
-	Plug 'juliosueiras/vim-terraform-completion'
-	let g:terraform_fmt_on_save=1
-	let g:terraform_align=1
+    " Terraform
+    Plug 'hashivim/vim-terraform'
+    Plug 'juliosueiras/vim-terraform-completion'
+    let g:terraform_fmt_on_save=1
+    let g:terraform_align=1
 "}}}
 
 " Development {{{
-	" Deoplete
-	if has('nvim')
-	  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	else
-	  Plug 'Shougo/deoplete.nvim'
-	  Plug 'roxma/nvim-yarp'
-	  Plug 'roxma/vim-hug-neovim-rpc'
-	endif
-	let g:deoplete#enable_at_startup = 1
+    " Deoplete
+    if has('nvim')
+      Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+      Plug 'Shougo/deoplete.nvim'
+      Plug 'roxma/nvim-yarp'
+      Plug 'roxma/vim-hug-neovim-rpc'
+    endif
+    let g:deoplete#enable_at_startup = 1
 
-	" Go
-	Plug 'deoplete-plugins/deoplete-go'
-	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-	let g:go_def_mode='gopls'
-	let g:go_info_mode='gopls'
+    " Go
+    Plug 'deoplete-plugins/deoplete-go'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    let g:go_def_mode='gopls'
+    let g:go_info_mode='gopls'
 
-	" Javascript
-	Plug 'pangloss/vim-javascript'    " JavaScript support
-	Plug 'leafgarland/typescript-vim' " TypeScript syntax
-	Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
-	Plug 'jparise/vim-graphql'        " GraphQL syntax
+    " Javascript
+    Plug 'pangloss/vim-javascript'    " JavaScript support
+    Plug 'leafgarland/typescript-vim' " TypeScript syntax
+    Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+    Plug 'jparise/vim-graphql'        " GraphQL syntax
 
-	"Prettier
-	Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+    "Prettier
+    Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
-	" Python
-	Plug 'davidhalter/jedi-vim'
-	Plug 'deoplete-plugins/deoplete-jedi'
-	Plug 'nvie/vim-flake8'
+    " Python
+    Plug 'davidhalter/jedi-vim'
+    Plug 'deoplete-plugins/deoplete-jedi'
+    Plug 'nvie/vim-flake8'
 
-	" TabNine
-	Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+    " TabNine
+    Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 "}}}
 
 call plug#end()
