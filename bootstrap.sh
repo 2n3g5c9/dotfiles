@@ -1,83 +1,83 @@
 #!/usr/bin/env bash
 
 brew-installs() {
-	command -v brew >/dev/null 2>&1 || { echo >&2 " ==> Installing Homebrew"; \
-		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
+  command -v brew >/dev/null 2>&1 || { echo >&2 " ==> Installing Homebrew"; \
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
 
-	echo " ==> Installing software with Homebrew"
-	brew bundle
+  echo " ==> Installing software with Homebrew"
+  brew bundle
 
-	echo " ==> Cleaning up Homebrew installs"
-	brew cleanup
+  echo " ==> Cleaning up Homebrew installs"
+  brew cleanup
 }
 
 additional-installs() {
-	if [ ! -d "${HOME}/.oh-my-zsh" ]; then
-		echo " ==> Installing Oh My Zsh"
-		sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-	fi
+  if [ ! -d "${HOME}/.oh-my-zsh" ]; then
+    echo " ==> Installing Oh My Zsh"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  fi
 
-	VIM_PLUG="${HOME}/.config/nvim/autoload/plug.vim"
-	if [ ! -f "${VIM_PLUG}" ]; then
-		echo " ==> Installing vim-plug"
-		curl -fLo "${VIM_PLUG}" --create-dirs \
-			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	fi
+  VIM_PLUG="${HOME}/.config/nvim/autoload/plug.vim"
+  if [ ! -f "${VIM_PLUG}" ]; then
+    echo " ==> Installing vim-plug"
+    curl -fLo "${VIM_PLUG}" --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  fi
 
-	if [ ! -d "${HOME}/.config/ranger/plugins/ranger_devicons" ]; then
-		echo " ==> Installing Ranger devicons"
-		git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
-	fi
+  if [ ! -d "${HOME}/.config/ranger/plugins/ranger_devicons" ]; then
+    echo " ==> Installing Ranger devicons"
+    git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+  fi
 }
 
 pip-installs() {
-	echo " ==> Installing Python modules"
-	pip3 install pynvim
-	sudo pip3 install haxor-news
+  echo " ==> Installing Python modules"
+  pip3 install pynvim
+  sudo pip3 install haxor-news
 }
 
 copy-dotfiles() {
-	echo " ==> Copying dotfiles"
+  echo " ==> Copying dotfiles"
 
-	cp config/zsh/zshrc "${HOME}/.zshrc"
-	cp config/aliases/aliases "${HOME}/.aliases"
-	cp config/aliases/aliases_kubectl "${HOME}/.aliases_kubectl"
+  cp config/zsh/zshrc "${HOME}/.zshrc"
+  cp config/aliases/aliases "${HOME}/.aliases"
+  cp config/aliases/aliases_kubectl "${HOME}/.aliases_kubectl"
 
-	cp config/tmux/tmux.conf "${HOME}/.tmux.conf"
+  cp config/tmux/tmux.conf "${HOME}/.tmux.conf"
 
-	cp config/git/gitaliases.txt "${HOME}/.gitaliases.txt"
-	cp config/git/gitconfig "${HOME}/.gitconfig"
+  cp config/git/gitaliases.txt "${HOME}/.gitaliases.txt"
+  cp config/git/gitconfig "${HOME}/.gitconfig"
 
-	mkdir -p "${HOME}/.config/alacritty"
-	cp config/alacritty/alacritty.yml "${HOME}/.config/alacritty/alacritty.yml"
+  mkdir -p "${HOME}/.config/alacritty"
+  cp config/alacritty/alacritty.yml "${HOME}/.config/alacritty/alacritty.yml"
 
-	mkdir -p "${HOME}/.config/nvim"
-	cp -r config/nvim/* "${HOME}/.config/nvim/"
+  mkdir -p "${HOME}/.config/nvim"
+  cp -r config/nvim/* "${HOME}/.config/nvim/"
 
-	mkdir -p "${HOME}/.config/ranger"
-	cp config/ranger/rc.conf "${HOME}/.config/ranger/rc.conf"
+  mkdir -p "${HOME}/.config/ranger"
+  cp config/ranger/rc.conf "${HOME}/.config/ranger/rc.conf"
 }
 
 do-it() {
-	# Brew installs.
-	brew-installs
+  # Brew installs.
+  brew-installs
 
-	# Additional installs.
-	additional-installs
+  # Additional installs.
+  additional-installs
 
-	# Python modules installs.
-	pip-installs
+  # Python modules installs.
+  pip-installs
 
-	# Copy dotfiles in appropriate directories.
-	copy-dotfiles
+  # Copy dotfiles in appropriate directories.
+  copy-dotfiles
 }
 
 if [ "$1" == "--force" ] || [ "$1" == "-f" ]; then
-	do-it;
+  do-it;
 else
-	read -r -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
-	echo "";
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		do-it;
-	fi;
+  read -r -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
+  echo "";
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    do-it;
+  fi;
 fi;

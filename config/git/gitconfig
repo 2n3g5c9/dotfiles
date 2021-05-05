@@ -8,6 +8,13 @@
 [pull]
 	rebase = false
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+    pager = delta
 [include]
-	path = ~/.gitalias.txt
+    path = ~/.gitalias.txt
+[delta]
+    plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
+    syntax-theme = gruvbox-dark
+    side-by-side = true
+[interactive]
+    diffFilter = delta --color-only
