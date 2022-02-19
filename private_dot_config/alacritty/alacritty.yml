@@ -1,0 +1,49 @@
+# Window Customization
+window:
+  dimensions:
+    columns: 180
+    lines: 48
+  padding:
+    x: 15
+    y: 15
+  decorations: buttonless
+scrolling:
+  history: 10000
+  multiplier: 3
+window.opacity: .98
+window.dynamic_title: true
+
+# Font Customization
+font:
+  normal:
+    family: Liga SFMono Nerd Font
+    style: Regular
+  bold:
+    family: Liga SFMono Nerd Font
+    style: Bold
+  italic:
+    family: Liga SFMono Nerd Font
+    style: Italic
+  size: 13
+  offset:
+    x: 0
+    y: 0
+  glyph_offset:
+    x: 0
+    y: 0
+  use_thin_strokes: false
+  debug:
+    persistent_logging: false
+draw_bold_text_with_bright_colors: true
+
+# Colors (Gruvbox Dark)
+import:
+  - ~/.config/alacritty/colors/gruvbox-dark.yml
+
+# Bindings
+key_bindings:
+  - { key: Left,     mods: Alt,     chars: "\x1bb"                       }
+  - { key: Right,    mods: Alt,     chars: "\x1bf"                       }
+  - { key: Left,     mods: Command, chars: "\x1bOH",   mode: AppCursor   } # Home
+  - { key: Right,    mods: Command, chars: "\x1bOF",   mode: AppCursor   } # End
+  - { key: Key3,      mods: Alt,    chars: "#" }

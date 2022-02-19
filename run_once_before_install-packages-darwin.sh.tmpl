@@ -1,0 +1,86 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+# Taps
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
+tap "homebrew/services"
+
+# Binaries
+brew "bash"
+brew "bash-completion@2"
+brew "findutils"
+brew "fish"
+brew "fisher"
+brew "gnu-sed"
+brew "gnupg"
+brew "moreutils"
+
+# Tools
+brew "ack"
+brew "curl"
+brew "gawk"
+brew "grep"
+brew "htop"
+brew "openssh"
+brew "tree"
+brew "wget"
+
+# Utilities
+brew "aria2"
+brew "bat"
+brew "broot"
+brew "exa"
+brew "fd"
+brew "fzf"
+brew "git-delta"
+brew "jq"
+brew "nnn"
+brew "pigz"
+brew "pre-commit"
+brew "prettyping"
+brew "procs"
+brew "ripgrep"
+brew "starship"
+brew "stow"
+brew "the_silver_searcher"
+brew "tealdeer"
+brew "thefuck"
+brew "tokei"
+brew "z"
+brew "zstd"
+
+# Development
+brew "cmake"
+brew "dive"
+brew "git"
+brew "git-lfs"
+brew "gitmoji"
+brew "go"
+brew "kind"
+brew "kubectl"
+brew "kubectx"
+brew "neovim"
+brew "node"
+brew "python"
+brew "terraform"
+brew "terraform-ls"
+brew "tmux"
+brew "universal-ctags"
+
+# Apps
+cask "alacritty"
+cask "docker"
+cask "firefox"
+cask "google-chrome"
+cask "lunar"
+cask "raycast"
+cask "visual-studio-code"
+cask "vlc"
+EOF
+
+brew cleanup
+{{ end -}}
