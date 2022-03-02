@@ -68,6 +68,9 @@ utils.map('n', 'zm', ':ZenMode<CR>')
 -- Tagbar
 utils.map('n', 'tb', ':TagbarToggle<CR>')
 
+-- NvimTree
+cmd('nmap <C-n> :NvimTreeToggle<CR>')
+
 -- Trouble
 utils.map('n', '<leader>xx', ':TroubleToggle<CR>')
 utils.map('n', '<leader>xw', ':TroubleToggle lsp_workspace_diagnostics<CR>')

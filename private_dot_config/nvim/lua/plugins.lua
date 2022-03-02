@@ -34,8 +34,14 @@ use 'folke/which-key.nvim'
 use 'ggandor/lightspeed.nvim'
 use 'tpope/vim-repeat'
 
--- File icons all around vim
-use 'kyazdani42/nvim-web-devicons'
+-- File explorer with icons
+use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+    },
+    config = function() require'nvim-tree'.setup {} end
+}
 
 -- Faster Neovim startup
 use 'lewis6991/impatient.nvim'
