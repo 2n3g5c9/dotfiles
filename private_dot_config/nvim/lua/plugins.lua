@@ -8,6 +8,9 @@ use 'wbthomason/packer.nvim'
 -- GENERAL
 -----------------------------------------------------------
 
+-- Fix CursorHold performance
+use 'antoinemadec/FixCursorHold.nvim'
+
 -- Bar for buffers
 use 'akinsho/bufferline.nvim'
 
@@ -34,6 +37,9 @@ use 'tpope/vim-repeat'
 -- File icons all around vim
 use 'kyazdani42/nvim-web-devicons'
 
+-- Faster Neovim startup
+use 'lewis6991/impatient.nvim'
+
 -- Print indentation lines
 use 'lukas-reineke/indent-blankline.nvim'
 
@@ -42,6 +48,14 @@ use 'luochen1990/rainbow'
 
 -- Tags of the current file
 use 'majutsushi/tagbar'
+
+-- Better escaping
+use {
+  "max397574/better-escape.nvim",
+  config = function()
+    require("better_escape").setup()
+  end,
+}
 
 -- Fast color highlighter
 use 'norcalli/nvim-colorizer.lua'
@@ -108,6 +122,7 @@ g['terraform_fmt_on_save'] = 1
 
 -- LSP
 use 'neovim/nvim-lspconfig'
+use 'williamboman/nvim-lsp-installer'
 use('hrsh7th/cmp-nvim-lsp', {branch = 'main'})
 use('hrsh7th/cmp-buffer', {branch = 'main'})
 use('hrsh7th/cmp-path', {branch = 'main'})

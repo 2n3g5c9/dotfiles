@@ -71,5 +71,8 @@ g['netrw_liststyle'] = 3
 g['netrw_altv'] = 1
 g['netrw_winsize'] = 25
 
+-- Fix CursorHold performance
+g['cursorhold_updatetime'] = 100
+
 -- Color configuration
 cmd 'colorscheme gruvbox-baby'

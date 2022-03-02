@@ -6,6 +6,8 @@ require('mappings')
 require('plugins')
 require('settings')
 
+require('impatient')
+
 require('plugins/bufferline')
 require('plugins/comment')
 require('plugins/lightspeed')

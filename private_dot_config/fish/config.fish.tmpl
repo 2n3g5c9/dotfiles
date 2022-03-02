@@ -13,6 +13,9 @@ end
 
 # Aliases
 source ~/.aliases
+{{- if eq .chezmoi.hostname "GBWWSLDNML04" }}
+source ~/.aliases_work
+{{- end }}
 
 # Brew
 fish_add_path /opt/homebrew/bin
@@ -22,8 +25,10 @@ fish_add_path /opt/homebrew/sbin
 set -g GOPATH $HOME/go
 set -gx PATH $GOPATH/bin $PATH
 
+{{- if eq .chezmoi.hostname "home" }}
 # Google Cloud SDK
 source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
+{{- end }}
 
 # The Fuck
 thefuck --alias | source
