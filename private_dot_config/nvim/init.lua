@@ -1,22 +1,32 @@
------------------------------------------------------------
--- Import Lua modules
------------------------------------------------------------
+local utils = require("core.utils")
 
-require('mappings')
-require('plugins')
-require('settings')
+utils.disabled_builtins()
 
-require('impatient')
+utils.bootstrap()
 
-require('plugins/bufferline')
-require('plugins/comment')
-require('plugins/lightspeed')
-require('plugins/todo-comments')
-require('plugins/zen-mode')
-require('plugins/nvim-autopairs')
-require('plugins/nvim-cmp')
-require('plugins/nvim-lspconfig')
-require('plugins/nvim-lualine')
-require('plugins/telescope')
-require('plugins/nvim-treesitter')
-require('plugins/nvim-tree')
+utils.impatient()
+
+local sources = {
+	"core.options",
+	"core.autocmds",
+	"core.plugins",
+	"core.mappings",
+}
+
+for _, source in ipairs(sources) do
+	local status_ok, fault = pcall(require, source)
+	if not status_ok then
+		error("Failed to load " .. source .. "\n\n" .. fault)
+	end
+end
+
+local config = utils.user_settings()
+
+if type(config.polish) == "function" then
+	config.polish()
+else
+	error("The polish value in your user configuration must be a function")
+end
+
+-- keep this last:
+utils.compiled()
