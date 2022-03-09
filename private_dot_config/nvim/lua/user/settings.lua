@@ -12,8 +12,6 @@ local config = {
 		-- Terraform
 		{ "hashivim/vim-terraform" },
 		{ "juliosueiras/vim-terraform-completion" },
-		-- Go
-		{ "fatih/vim-go" },
 		-- { "andweeb/presence.nvim" },
 		-- {
 		-- "ray-x/lsp_signature.nvim",
