@@ -69,7 +69,6 @@ function M.config()
 	}
 
 	local mappings = {
-		["d"] = { "<cmd>Dashboard<cr>", "Dashboard" },
 		["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 		["w"] = { "<cmd>w<CR>", "Save" },
 		["q"] = { "<cmd>q<CR>", "Quit" },

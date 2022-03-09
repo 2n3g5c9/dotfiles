@@ -6,11 +6,6 @@ set -gx EDITOR nvim
 set -x -g LC_ALL en_GB.UTF-8
 set -x -g LANG en_GB.UTF-8
 
-# Theme
-if status --is-interactive
-    theme_gruvbox dark medium
-end
-
 # Aliases
 source ~/.aliases
 {{- if eq .chezmoi.hostname "GBWWSLDNML04" }}

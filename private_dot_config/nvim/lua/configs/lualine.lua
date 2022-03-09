@@ -7,8 +7,8 @@ function M.config()
 	end
 
 	local colors = {
-		neutral_green = "#98971a",
-		neutral_orange = "#d65d0e",
+		green = "#ABE9B3",
+		peach = "#F8BD96",
 	}
 
 	local conditions = {
@@ -27,7 +27,7 @@ function M.config()
 
 	local config = {
 		options = {
-			disabled_filetypes = { "NvimTree", "neo-tree", "dashboard", "Outline" },
+			disabled_filetypes = { "NvimTree", "neo-tree", "dashboard", "Outline", "alpha" },
 			component_separators = "",
 			section_separators = "",
 		},
@@ -177,7 +177,7 @@ function M.config()
 			return ""
 		end,
 		padding = { left = 1, right = 0 },
-		color = { fg = colors.neutral_green },
+		color = { fg = colors.green },
 		cond = conditions.hide_in_width,
 	})
 
@@ -202,7 +202,7 @@ function M.config()
 			return chars[index]
 		end,
 		padding = { left = 1, right = 1 },
-		color = { fg = colors.neutral_orange },
+		color = { fg = colors.peach },
 		cond = nil,
 	})
 

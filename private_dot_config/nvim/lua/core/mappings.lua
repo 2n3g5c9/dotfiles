@@ -37,15 +37,6 @@ if config.enabled.nvim_tree then
 	map("n", "<leader>o", "<cmd>NvimTreeFocus<CR>", opts)
 end
 
--- Dashboard
-if config.enabled.dashboard then
-	map("n", "<leader>fn", "<cmd>DashboardNewFile<CR>", opts)
-	map("n", "<leader>db", "<cmd>Dashboard<CR>", opts)
-	map("n", "<leader>bm", "<cmd>DashboardJumpMarks<CR>", opts)
-	map("n", "<leader>sl", "<cmd>SessionLoad<CR>", opts)
-	map("n", "<leader>ss", "<cmd>SessionSave<CR>", opts)
-end
-
 -- Telescope
 map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", opts)
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", opts)

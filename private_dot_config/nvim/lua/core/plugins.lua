@@ -10,6 +10,11 @@ end
 
 packer.startup({
 	function(use)
+		-- Color theme
+		use({
+			"catppuccin/nvim",
+			as = "catppuccin",
+		})
 		-- Plugin manager
 		use({
 			"wbthomason/packer.nvim",
@@ -258,11 +263,10 @@ packer.startup({
 
 		-- Start screen
 		use({
-			"glepnir/dashboard-nvim",
+			"goolord/alpha-nvim",
 			config = function()
-				require("configs.dashboard").config()
+				require("alpha").setup(require("alpha.themes.dashboard").config)
 			end,
-			disable = not config.enabled.dashboard,
 		})
 
 		-- Color highlighting

@@ -1,6 +1,6 @@
 local config = {
 
-	colorscheme = "gruvbox",
+	colorscheme = "catppuccin",
 
 	plugins = {},
 
