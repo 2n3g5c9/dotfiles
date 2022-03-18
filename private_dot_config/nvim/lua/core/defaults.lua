@@ -30,6 +30,7 @@ local config = {
 		toggle_term = true,
 		comment = true,
 		symbols_outline = true,
+		indent_blankline = true,
 		dashboard = true,
 		which_key = true,
 		neoscroll = true,

@@ -12,14 +12,6 @@ local config = {
 		-- Terraform
 		{ "hashivim/vim-terraform" },
 		{ "juliosueiras/vim-terraform-completion" },
-		-- { "andweeb/presence.nvim" },
-		-- {
-		-- "ray-x/lsp_signature.nvim",
-		-- event = "BufRead",
-		-- config = function()
-		-- require("lsp_signature").setup()
-		-- end,
-		-- },
 	},
 
 	overrides = {
@@ -42,6 +34,7 @@ local config = {
 		toggle_term = true,
 		comment = true,
 		symbols_outline = true,
+		indent_blankline = true,
 		dashboard = true,
 		which_key = true,
 		neoscroll = true,

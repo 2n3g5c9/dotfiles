@@ -265,7 +265,7 @@ packer.startup({
 		use({
 			"goolord/alpha-nvim",
 			config = function()
-				require("alpha").setup(require("alpha.themes.dashboard").config)
+				require("alpha").setup(require("alpha.themes.startify").config)
 			end,
 		})
 
@@ -306,6 +306,15 @@ packer.startup({
 				require("configs.comment").config()
 			end,
 			disable = not config.enabled.comment,
+		})
+
+		-- Indentation
+		use({
+			"lukas-reineke/indent-blankline.nvim",
+			config = function()
+				require("configs.indent-line").config()
+			end,
+			disable = not config.enabled.indent_blankline,
 		})
 
 		-- Keymaps popup
