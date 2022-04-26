@@ -1,106 +1,135 @@
 local M = {}
 
-local utils = require("core.utils")
-local config = utils.user_settings()
-
 local packer_status_ok, packer = pcall(require, "packer")
-if not packer_status_ok then
-	return
-end
+if packer_status_ok then
+	local utils = require("core.utils")
+	local config = utils.user_settings()
 
-packer.startup({
-	function(use)
-		-- Color theme
-		use({
-			"catppuccin/nvim",
-			as = "catppuccin",
-		})
+	local astro_plugins = {
 		-- Plugin manager
-		use({
+		{
 			"wbthomason/packer.nvim",
-		})
+		},
 
 		-- Optimiser
-		use({
-			"lewis6991/impatient.nvim",
-		})
+		{ "lewis6991/impatient.nvim" },
 
 		-- Lua functions
-		use({
-			"nvim-lua/plenary.nvim",
-		})
+		{ "nvim-lua/plenary.nvim" },
 
 		-- Popup API
-		use({
-			"nvim-lua/popup.nvim",
-		})
+		{ "nvim-lua/popup.nvim" },
 
-		-- Boost startup time
-		use({
-			"nathom/filetype.nvim",
+		-- Indent detection
+		{
+			"Darazaki/indent-o-matic",
+			event = "BufRead",
 			config = function()
-				vim.g.did_load_filetypes = 1
+				require("configs.indent-o-matic").config()
 			end,
-		})
+		},
+
+		-- Notification Enhancer
+		{
+			"rcarriga/nvim-notify",
+			config = function()
+				require("configs.notify").config()
+			end,
+		},
+
+		-- Neovim UI Enhancer
+		{
+			"MunifTanjim/nui.nvim",
+			module = "nui",
+		},
 
 		-- Cursorhold fix
-		use({
+		{
 			"antoinemadec/FixCursorHold.nvim",
-			event = "BufRead",
+			event = { "BufRead", "BufNewFile" },
 			config = function()
 				vim.g.cursorhold_updatetime = 100
 			end,
-		})
+		},
+
+		-- Smarter Splits
+		{
+			"mrjones2014/smart-splits.nvim",
+			module = "smart-splits",
+			config = function()
+				require("configs.smart-splits").config()
+			end,
+		},
 
 		-- Icons
-		use({
+		{
 			"kyazdani42/nvim-web-devicons",
 			config = function()
 				require("configs.icons").config()
 			end,
-		})
+		},
 
 		-- Bufferline
-		use({
+		{
 			"akinsho/bufferline.nvim",
 			after = "nvim-web-devicons",
 			config = function()
 				require("configs.bufferline").config()
 			end,
 			disable = not config.enabled.bufferline,
-		})
+		},
 
 		-- Better buffer closing
-		use({
+		{
 			"moll/vim-bbye",
-		})
+		},
 
 		-- File explorer
-		use({
-			"kyazdani42/nvim-tree.lua",
-			cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-			commit = "8b27fd4",
+		{
+			"nvim-neo-tree/neo-tree.nvim",
+			module = "neo-tree",
+			cmd = "Neotree",
+			requires = "MunifTanjim/nui.nvim",
 			config = function()
-				require("configs.nvim-tree").config()
+				require("configs.neo-tree").config()
 			end,
-			disable = not config.enabled.nvim_tree,
-		})
+			disable = not config.enabled.neo_tree,
+		},
 
 		-- Statusline
-		use({
+		{
 			"nvim-lualine/lualine.nvim",
-			commit = "6a3d367",
 			config = function()
 				require("configs.lualine").config()
 			end,
 			disable = not config.enabled.lualine,
-		})
+		},
+
+		-- Parenthesis highlighting
+		{
+			"p00f/nvim-ts-rainbow",
+			after = "nvim-treesitter",
+			disable = not config.enabled.ts_rainbow,
+		},
+
+		-- Autoclose tags
+		{
+			"windwp/nvim-ts-autotag",
+			after = "nvim-treesitter",
+			disable = not config.enabled.ts_autotag,
+		},
+
+		-- Context based commenting
+		{
+			"JoosepAlviste/nvim-ts-context-commentstring",
+			after = "nvim-treesitter",
+		},
 
 		-- Syntax highlighting
-		use({
+		{
 			"nvim-treesitter/nvim-treesitter",
 			run = ":TSUpdate",
-			event = "BufRead",
+			event = { "BufRead", "BufNewFile" },
 			cmd = {
 				"TSInstall",
 				"TSInstallInfo",
@@ -114,78 +143,72 @@ packer.startup({
 			config = function()
 				require("configs.treesitter").config()
 			end,
-			requires = {
-				{
-					-- Parenthesis highlighting
-					"p00f/nvim-ts-rainbow",
-					after = "nvim-treesitter",
-					disable = not config.enabled.ts_rainbow,
-				},
-				{
-					-- Autoclose tags
-					"windwp/nvim-ts-autotag",
-					after = "nvim-treesitter",
-					disable = not config.enabled.ts_autotag,
-				},
-				{
-					-- Context based commenting
-					"JoosepAlviste/nvim-ts-context-commentstring",
-					after = "nvim-treesitter",
-				},
-			},
-		})
+		},
+
+		-- Snippet collection
+		{
+			"rafamadriz/friendly-snippets",
+			after = "nvim-cmp",
+		},
 
 		-- Snippet engine
-		use({
+		{
 			"L3MON4D3/LuaSnip",
+			after = "friendly-snippets",
 			config = function()
-				local settings = require("core.utils").user_settings()
-				local loader = require("luasnip/loaders/from_vscode")
-				loader.lazy_load({ paths = settings.overrides.luasnip.vscode_snippets_paths })
-				loader.lazy_load()
+				require("configs.luasnip").config()
 			end,
-			requires = {
-				-- Snippet collections
-				"rafamadriz/friendly-snippets",
-			},
-		})
+		},
 
 		-- Completion engine
-		use({
+		{
 			"hrsh7th/nvim-cmp",
-			event = "BufRead",
+			event = "InsertEnter",
 			config = function()
 				require("configs.cmp").config()
 			end,
-		})
+		},
 
 		-- Snippet completion source
-		use({
+		{
 			"saadparwaiz1/cmp_luasnip",
 			after = "nvim-cmp",
-		})
+			config = function()
+				require("core.utils").add_user_cmp_source("luasnip")
+			end,
+		},
 
 		-- Buffer completion source
-		use({
+		{
 			"hrsh7th/cmp-buffer",
 			after = "nvim-cmp",
-		})
+			config = function()
+				require("core.utils").add_user_cmp_source("buffer")
+			end,
+		},
 
 		-- Path completion source
-		use({
+		{
 			"hrsh7th/cmp-path",
 			after = "nvim-cmp",
-		})
+			config = function()
+				require("core.utils").add_user_cmp_source("path")
+			end,
+		},
 
 		-- LSP completion source
-		use({
+		{
 			"hrsh7th/cmp-nvim-lsp",
-		})
+			after = "nvim-cmp",
+			config = function()
+				require("core.utils").add_user_cmp_source("nvim_lsp")
+			end,
+		},
 
 		-- LSP manager
-		use({
+		{
 			"williamboman/nvim-lsp-installer",
-			event = "BufRead",
+			module = "nvim-lsp-installer",
 			cmd = {
 				"LspInstall",
 				"LspInstallInfo",
@@ -196,186 +219,195 @@ packer.startup({
 				"LspUninstall",
 				"LspUninstallAll",
 			},
-		})
+		},
 
 		-- Built-in LSP
-		use({
+		{
 			"neovim/nvim-lspconfig",
-			event = "BufRead",
+			tag = "v0.1.3",
+			event = "BufWinEnter",
 			config = function()
 				require("configs.lsp")
 			end,
-		})
-
-		-- LSP enhancer
-		use({
-			"tami5/lspsaga.nvim",
-			event = "BufRead",
-			config = function()
-				require("configs.lsp.lspsaga").config()
-			end,
-			disable = not config.enabled.lspsaga,
-		})
+		},
 
 		-- LSP symbols
-		use({
+		{
 			"simrat39/symbols-outline.nvim",
 			cmd = "SymbolsOutline",
 			setup = function()
 				require("configs.symbols-outline").setup()
 			end,
 			disable = not config.enabled.symbols_outline,
-		})
+		},
 
 		-- Formatting and linting
-		use({
+		{
 			"jose-elias-alvarez/null-ls.nvim",
-			event = "BufRead",
+			event = { "BufRead", "BufNewFile" },
 			config = function()
-				require("user.null-ls").config()
+				local null_ls = require("core.utils").user_plugin_opts("null-ls")
+				if type(null_ls) == "function" then
+					null_ls()
+				end
 			end,
-		})
+		},
 
 		-- Fuzzy finder
-		use({
+		{
 			"nvim-telescope/telescope.nvim",
 			cmd = "Telescope",
+			module = "telescope",
 			config = function()
 				require("configs.telescope").config()
 			end,
-		})
+		},
 
 		-- Fuzzy finder syntax support
-		use({
-			"nvim-telescope/telescope-fzf-native.nvim",
+		{
+			("nvim-telescope/telescope-%s-native.nvim"):format(vim.fn.has("win32") == 1 and "fzy" or "fzf"),
+			after = "telescope.nvim",
 			run = "make",
-		})
+			config = function()
+				require("telescope").load_extension(vim.fn.has("win32") == 1 and "fzy_native" or "fzf")
+			end,
+		},
 
 		-- Git integration
-		use({
+		{
 			"lewis6991/gitsigns.nvim",
-			event = "BufRead",
+			event = { "BufRead", "BufNewFile" },
 			config = function()
 				require("configs.gitsigns").config()
 			end,
 			disable = not config.enabled.gitsigns,
-		})
+		},
 
 		-- Start screen
-		use({
-			"goolord/alpha-nvim",
+		{
+			"glepnir/dashboard-nvim",
 			config = function()
-				require("alpha").setup(require("alpha.themes.startify").config)
+				require("configs.dashboard").config()
 			end,
-		})
+			disable = not config.enabled.dashboard,
+		},
 
 		-- Color highlighting
-		use({
+		{
 			"norcalli/nvim-colorizer.lua",
-			event = "BufRead",
+			event = { "BufRead", "BufNewFile" },
 			config = function()
 				require("configs.colorizer").config()
 			end,
 			disable = not config.enabled.colorizer,
-		})
+		},
 
 		-- Autopairs
-		use({
+		{
 			"windwp/nvim-autopairs",
 			event = "InsertEnter",
 			config = function()
 				require("configs.autopairs").config()
 			end,
-		})
+		},
 
 		-- Terminal
-		use({
+		{
 			"akinsho/nvim-toggleterm.lua",
 			cmd = "ToggleTerm",
+			module = { "toggleterm", "toggleterm.terminal" },
 			config = function()
 				require("configs.toggleterm").config()
 			end,
 			disable = not config.enabled.toggle_term,
-		})
+		},
 
 		-- Commenting
-		use({
+		{
 			"numToStr/Comment.nvim",
-			event = "BufRead",
+			event = { "BufRead", "BufNewFile" },
 			config = function()
 				require("configs.comment").config()
 			end,
 			disable = not config.enabled.comment,
-		})
+		},
 
 		-- Indentation
-		use({
+		{
 			"lukas-reineke/indent-blankline.nvim",
 			config = function()
 				require("configs.indent-line").config()
 			end,
 			disable = not config.enabled.indent_blankline,
-		})
+		},
 
 		-- Keymaps popup
-		use({
+		{
 			"folke/which-key.nvim",
 			config = function()
 				require("configs.which-key").config()
 			end,
 			disable = not config.enabled.which_key,
-		})
+		},
 
 		-- Smooth scrolling
-		use({
+		{
 			"karb94/neoscroll.nvim",
-			event = "BufRead",
+			event = { "BufRead", "BufNewFile" },
 			config = function()
 				require("configs.neoscroll").config()
 			end,
 			disable = not config.enabled.neoscroll,
-		})
+		},
 
 		-- Smooth escaping
-		use({
+		{
 			"max397574/better-escape.nvim",
 			event = { "InsertEnter" },
 			config = function()
-				require("better_escape").setup({
-					mapping = { "ii", "jj", "jk", "kj" },
-					timeout = vim.o.timeoutlen,
-					keys = "<ESC>",
-				})
+				require("configs.better_escape").config()
 			end,
-		})
+		},
 
 		-- Get extra JSON schemas
-		use({ "b0o/SchemaStore.nvim" })
+		{ "b0o/SchemaStore.nvim" },
+	}
 
-		-- User defined plugins
-		if config.plugins and not vim.tbl_isempty(config.plugins) then
-			for _, plugin in pairs(config.plugins) do
+	packer.startup({
+		function(use)
+			-- Load plugins!
+			for _, plugin in
+				pairs(
+					require("core.utils").user_plugin_opts(
+						"plugins.init",
+						require("core.utils").label_plugins(astro_plugins)
+					)
+				)
+			do
 				use(plugin)
 			end
-		end
-	end,
-	config = {
-		compile_path = config.packer_file,
-		display = {
-			open_fn = function()
-				return require("packer.util").float({ border = "rounded" })
-			end,
-		},
-		profile = {
-			enable = true,
-			threshold = 0.0001,
-		},
-		git = {
-			clone_timeout = 300,
-		},
-		auto_clean = true,
-		compile_on_sync = true,
-	},
-})
+		end,
+		config = require("core.utils").user_plugin_opts("plugins.packer", {
+			compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
+			display = {
+				open_fn = function()
+					return require("packer.util").float({ border = "rounded" })
+				end,
+			},
+			profile = {
+				enable = true,
+				threshold = 0.0001,
+			},
+			git = {
+				clone_timeout = 300,
+				subcommands = {
+					update = "pull --rebase",
+				},
+			},
+			auto_clean = true,
+			compile_on_sync = true,
+		}),
+	})
+end
 
 return M

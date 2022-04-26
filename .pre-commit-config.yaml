@@ -1,6 +1,6 @@
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
+    rev: v4.2.0
     hooks:
     -   id: check-added-large-files
     -   id: check-case-conflict
@@ -16,7 +16,3 @@ repos:
     -   id: end-of-file-fixer
     -   id: fix-byte-order-marker
     -   id: trailing-whitespace
--   repo: https://github.com/JohnnyMorganz/StyLua.git
-    rev: v0.12.4
-    hooks:
-    -   id: stylua

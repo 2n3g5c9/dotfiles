@@ -1,30 +1,25 @@
 local config = {
 
-	colorscheme = "catppuccin",
+	colorscheme = "default_theme",
 
-	plugins = {},
-
-	overrides = {
-		lsp_installer = {
-			server_registration_override = function(server, opts)
-				server:setup(opts)
-			end,
+	plugins = {
+		packer = {
+			compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
 		},
-		treesitter = {},
-		luasnip = {
-			-- A set of paths to look up VSCode snippets in
-			vscode_snippets_paths = {},
-		},
-		which_key = {},
 	},
 
-	virtual_text = true,
+	diagnostics = {
+		virtual_text = true,
+	},
+
+	default_theme = {
+		diagnostics_style = {},
+	},
 
 	enabled = {
 		bufferline = true,
-		nvim_tree = true,
+		neo_tree = true,
 		lualine = true,
-		lspsaga = true,
 		gitsigns = true,
 		colorizer = true,
 		toggle_term = true,
@@ -38,9 +33,19 @@ local config = {
 		ts_autotag = true,
 	},
 
-	packer_file = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
+	cmp = {
+		source_priority = {
+			nvim_lsp = 1000,
+			luasnip = 750,
+			buffer = 500,
+			path = 250,
+		},
+	},
 
-	polish = function() end,
+	ui = {
+		nui_input = true,
+		telescope_select = true,
+	},
 }
 
 return config
