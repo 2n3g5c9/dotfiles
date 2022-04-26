@@ -13,11 +13,6 @@ function M.config()
 		" ",
 		" ",
 		" ",
-		" █████  ███████ ████████ ██████   ██████",
-		"██   ██ ██         ██    ██   ██ ██    ██",
-		"███████ ███████    ██    ██████  ██    ██",
-		"██   ██      ██    ██    ██   ██ ██    ██",
-		"██   ██ ███████    ██    ██   ██  ██████",
 		" ",
 		"    ███    ██ ██    ██ ██ ███    ███",
 		"    ████   ██ ██    ██ ██ ████  ████",
@@ -40,7 +35,7 @@ function M.config()
 
 	g.dashboard_custom_footer = {
 		" ",
-		" AstroNvim loaded " .. plugins_count .. " plugins ",
+		" Nvim loaded " .. plugins_count .. " plugins ",
 	}
 end
 
