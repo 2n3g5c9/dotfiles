@@ -1,0 +1,98 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+
+set -eu
+
+export DEBIAN_FRONTEND=noninteractive
+
+DELTA_VERSION="0.12.1"
+GO_VERSION="1.18"
+NODE_VERSION="16"
+NVIM_VERSION="0.7.0"
+
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+
+sudo apt-get update
+sudo apt-get install -y \
+    fish \
+    fzf \
+    git \
+    htop \
+    iftop \
+    jq \
+    mosh \
+    prettyping \
+    python3 \
+    python3-pip \
+    ripgrep \
+    terraform-ls \
+    tmux \
+    universal-ctags \
+    unzip \
+    xdg-utils
+sudo apt-get auto-remove -y
+
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+
+if [ ! -f "/usr/local/bin/starship" ]; then
+    echo " ==> Installing Starship"
+    curl -fsSL https://starship.rs/install.sh | sh -s -- -f
+fi
+
+if [ ! -f "/usr/bin/delta" ]; then
+    echo " ==> Installing git-delta"
+    curl -sLO "https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/git-delta_${DELTA_VERSION}_amd64.deb"
+    sudo dpkg -i ./git-delta_${DELTA_VERSION}_amd64.deb
+    rm ./git-delta_${DELTA_VERSION}_amd64.deb
+fi
+
+LOCAL_BIN="${HOME}/.local/bin"
+mkdir -p "${LOCAL_BIN}"
+if [ ! -f "${LOCAL_BIN}/nvim.appimage" ]; then
+    echo " ==> Installing nvim"
+    curl -fLo "${LOCAL_BIN}/nvim.appimage" https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim.appimage
+    chmod u+x "${LOCAL_BIN}/nvim.appimage"
+fi
+
+TPM="${HOME}/.tmux/plugins/tpm"
+if [ ! -d "${TPM}" ]; then
+    echo " ==> Installing tpm"
+    git clone https://github.com/tmux-plugins/tpm "${TPM}"
+fi
+
+TFENV="${HOME}/.tfenv"
+if [ ! -d "${TFENV}" ]; then
+    echo " ==> Installing tfenv"
+    git clone https://github.com/tfutils/tfenv.git ~/.tfenv
+fi
+
+pip install pre-commit
+
+GO_ARCHIVE="go${GO_VERSION}.linux-amd64.tar.gz"
+GO_ROOT="/usr/local"
+if [ ! -d "${GO_ROOT}/go" ]; then
+    echo " ==> Installing Go"
+    curl -fLo ${GO_ARCHIVE} \
+        https://dl.google.com/go/${GO_ARCHIVE}
+    sudo tar -C ${GO_ROOT} -xzf ${GO_ARCHIVE}
+    rm ${GO_ARCHIVE}
+fi
+
+if [ ! -f "/usr/bin/node" ]; then
+    echo " ==> Installing Node.js"
+    curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | sudo bash -
+    sudo apt-get install -y nodejs
+fi
+
+if [ ! -f "/usr/bin/yarn" ]; then
+    echo " ==> Installing yarn"
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    sudo apt-get update && sudo apt-get install -y yarn && sudo apt-get auto-remove
+fi
+
+if [ -f "/usr/bin/fish" ]; then
+    sudo chsh -s /usr/bin/fish "${USER}"
+fi
+{{- end }}
