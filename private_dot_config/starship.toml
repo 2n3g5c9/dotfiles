@@ -3,3 +3,9 @@ disabled = true
 
 [gcloud]
 disabled = true
+
+[localip]
+disabled = false
+
+[lua]
+disabled = true
