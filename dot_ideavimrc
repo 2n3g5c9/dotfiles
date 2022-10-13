@@ -1,0 +1,71 @@
+inoremap jj <Esc>
+let mapleader = " "
+
+" General configuration {{{
+	" Enable syntax highlighting
+	syntax on
+
+	" Highlight current line
+	set cursorline
+
+	" Enable use of the mouse for all modes
+	set mouse=a
+
+	" Display relative numbers
+	set number
+	set relativenumber
+
+	" Record more lines in history
+	set history=10000
+"}}}
+
+" JetBrains IDE specific configuration {{{
+    " Emulated vim-surround plugin
+    set surround
+
+    " Enable joins via the IDE
+    set ideajoin
+
+    " Copy to system clipboard as well
+    set clipboard+=unnamed
+"}}}
+
+" Set up smarter search behaviour {{{
+	set incsearch   " Lookahead as search pattern is specified
+	set ignorecase  " Ignore case in all searches...
+	set smartcase   " ...unless uppercase letters used
+"}}}
+
+" Code manipulation {{{
+    nnoremap gI :action GotoImplementation<CR>
+"}}}
+
+" Text manipulation {{{
+	" Cut, Copy & Paste to system clipboard
+	noremap <leader>d "+d
+	noremap <leader>y "+y
+	noremap <leader>p "+p
+	noremap <leader>P "+P
+
+	" Move lines around
+	nnoremap <S-Up> :m-2<CR>
+	nnoremap <S-Down> :m+<CR>
+	inoremap <S-Up> <Esc>:m-2<CR>
+	inoremap <S-Down> <Esc>:m+<CR>
+"}}}
+
+" Window management {{{
+	" Split windows
+	nnoremap <leader>- <C-w>s
+	nnoremap <leader>_ <C-w>v
+	nnoremap <leader>q <C-w>o
+	nnoremap <leader>s <C-w>r
+	nnoremap <leader>= <C-w>=
+	nnoremap <leader>+ <C-w>s
+
+	" Change active window
+	nnoremap <C-h> <C-w>h
+	nnoremap <C-j> <C-w>j
+	nnoremap <C-k> <C-w>k
+	nnoremap <C-l> <C-w>l
+"}}}

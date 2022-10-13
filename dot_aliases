@@ -1,5 +1,8 @@
-# LazyGit
-alias lg="lazygit"
+# Gitui
+alias gu="gitui"
+
+# Helix
+alias h="hx"
 
 # NeoVim by default
 alias vim="nvim"
@@ -8,6 +11,7 @@ alias v="nvim"
 
 # Tmux
 alias t="tmux"
+alias tns="tmux new -s"
 
 # Exa
 alias ls="exa"

@@ -1,4 +1,3 @@
-README.md
+.gitconfig
 init.sh
-
-.nvim_config.lua # user-specific AstroNvim config
+README.md
