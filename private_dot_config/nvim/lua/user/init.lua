@@ -1,9 +1,6 @@
 vim.g.catppuccin_flavour = "mocha"
 
-return {
-  colorscheme = "catppuccin",
-
-  header = {
+local header = {
 "  ████████              ████████           ██████████           ████████ ",
 " ███░░░░███            ███░░░░███         ░███░░░░░░█          ███░░░░███",
 "░░░    ░███ ████████  ░░░    ░███  ███████░███     ░   ██████ ░███   ░███",
@@ -15,18 +12,27 @@ return {
 "                                  ███ ░███                               ",
 "                                 ░░██████                                ",
 "                                  ░░░░░░                                 ",
-  },
+}
+
+
+return {
+  colorscheme = "catppuccin",
+
 
   plugins = {
-    init = {
-      {
-        "catppuccin/nvim",
-        as = "catppuccin",
-        config = function()
-          require("catppuccin").setup {}
-        end,
-      },
-      { "fatih/vim-go" },
+    {
+      "goolord/alpha-nvim",
+      opts = function(_, opts)
+        opts.section.header.val = header
+      end,
     },
+    {
+      "catppuccin/nvim",
+      as = "catppuccin",
+      config = function()
+        require("catppuccin").setup {}
+      end,
+    },
+    { "fatih/vim-go" },
   },
 }

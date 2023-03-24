@@ -1,7 +1,7 @@
 set fish_greeting ""
 
 set -gx TERM xterm-256color
-set -gx EDITOR hx
+set -gx EDITOR nvim
 
 set -x -g LC_ALL en_GB.UTF-8
 set -x -g LANG en_GB.UTF-8
@@ -22,10 +22,6 @@ fish_add_path /opt/homebrew/sbin
 # Go
 set -g GOPATH $HOME/go
 set -gx PATH $GOPATH/bin $PATH
-
-# Java
-set -g JAVA_HOME $(/usr/libexec/java_home)
-set -gx PATH $JAVA_HOME/bin $PATH
 
 {{- if eq .chezmoi.hostname "MBP2021" }}
 # Google Cloud SDK
