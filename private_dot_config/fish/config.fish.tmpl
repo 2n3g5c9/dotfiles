@@ -34,4 +34,15 @@ test -f ~/.kubectl_aliases.fish && source ~/.kubectl_aliases.fish
 # The Fuck
 thefuck --alias | source
 
+# pnpm
+set -gx PNPM_HOME "/Users/marc/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
+
+# zoxide
+zoxide init fish | source
+
+# Starship
 starship init fish | source

@@ -13,14 +13,14 @@ alias v="nvim"
 alias t="tmux"
 alias tns="tmux new -s"
 
-# Exa
-alias ls="exa"
-alias l="exa -lbF --git"
-alias ll="exa -lbGF --git"
-alias llm="exa -lbGd --git --sort=modified"
-alias la="exa -lbhHigUmuSa --time-style=long-iso --git --color-scale"
-alias lx="exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale"
-alias lt="exa --tree --level=2"
+# Eza
+alias ls="eza"
+alias l="eza -lbF --git"
+alias ll="eza -lbGF --git"
+alias llm="eza -lbGd --git --sort=modified"
+alias la="eza -lbhHigUmuSa --time-style=long-iso --git --color-scale"
+alias lx="eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale"
+alias lt="eza --tree --level=2"
 
 # Kubectx
 alias kctx="kubectx"

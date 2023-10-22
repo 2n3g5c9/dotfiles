@@ -16,13 +16,13 @@ window.dynamic_title: true
 # Font Customization
 font:
   normal:
-    family: Liga SFMono Nerd Font
+    family: "Liga SFMono Nerd Font"
     style: Regular
   bold:
-    family: Liga SFMono Nerd Font
+    family: "Liga SFMono Nerd Font"
     style: Bold
   italic:
-    family: Liga SFMono Nerd Font
+    family: "Liga SFMono Nerd Font"
     style: Italic
   size: 13
   offset:
