@@ -1,19 +1,17 @@
-# Window Customization
 window:
+  decorations: buttonless
   dimensions:
     columns: 180
     lines: 48
+  dynamic_title: true
+  opacity: .97
   padding:
     x: 15
     y: 15
-  decorations: buttonless
 scrolling:
   history: 10000
   multiplier: 3
-window.opacity: .98
-window.dynamic_title: true
 
-# Font Customization
 font:
   normal:
     family: "Liga SFMono Nerd Font"
@@ -31,18 +29,14 @@ font:
   glyph_offset:
     x: 0
     y: 0
-  debug:
-    persistent_logging: false
 draw_bold_text_with_bright_colors: true
 
-# Colors (Catppuccin)
 import:
   - ~/.config/alacritty/colors/catppuccin.yml
 
 env:
   TERM: xterm-256color
 
-# Bindings
 key_bindings:
   - { key: Left,     mods: Alt,     chars: "\x1bb"                       }
   - { key: Right,    mods: Alt,     chars: "\x1bf"                       }
