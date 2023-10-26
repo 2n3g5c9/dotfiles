@@ -1,16 +1,7 @@
-window:
-  decorations: buttonless
-  dimensions:
-    columns: 180
-    lines: 48
-  dynamic_title: true
-  opacity: .97
-  padding:
-    x: 15
-    y: 15
-scrolling:
-  history: 10000
-  multiplier: 3
+draw_bold_text_with_bright_colors: true
+
+env:
+  TERM: xterm-256color
 
 font:
   normal:
@@ -22,20 +13,19 @@ font:
   italic:
     family: "Liga SFMono Nerd Font"
     style: Italic
-  size: 13
+  bold_italic:
+    family: "Liga SFMono Nerd Font"
+    style: Bold Italic
+  size: 12
   offset:
     x: 0
     y: 0
   glyph_offset:
     x: 0
     y: 0
-draw_bold_text_with_bright_colors: true
 
 import:
-  - ~/.config/alacritty/colors/catppuccin.yml
-
-env:
-  TERM: xterm-256color
+  - ~/.config/alacritty/colors/catppuccin-mocha.yml
 
 key_bindings:
   - { key: Left,     mods: Alt,     chars: "\x1bb"                       }
@@ -44,3 +34,20 @@ key_bindings:
   - { key: Right,    mods: Command, chars: "\x1bOF",   mode: AppCursor   } # End
   - { key: Key3,     mods: Alt,     chars: "#"                           }
   - { key: S,        mods: Alt,     chars: "\x1bs"                       }
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+shell:
+  program: /opt/homebrew/bin/fish
+
+window:
+  decorations: buttonless
+  dimensions:
+    columns: 120
+    lines: 40
+  opacity: .98
+  padding:
+    x: 5
+    y: 5
