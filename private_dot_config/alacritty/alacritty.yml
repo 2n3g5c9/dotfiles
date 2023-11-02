@@ -5,16 +5,16 @@ env:
 
 font:
   normal:
-    family: "Liga SFMono Nerd Font"
+    family: "Hack Nerd Font"
     style: Regular
   bold:
-    family: "Liga SFMono Nerd Font"
+    family: "Hack Nerd Font"
     style: Bold
   italic:
-    family: "Liga SFMono Nerd Font"
+    family: "Hack Nerd Font"
     style: Italic
   bold_italic:
-    family: "Liga SFMono Nerd Font"
+    family: "Hack Nerd Font"
     style: Bold Italic
   size: 12
   offset:
@@ -45,7 +45,7 @@ shell:
 window:
   decorations: buttonless
   dimensions:
-    columns: 120
+    columns: 150
     lines: 40
   opacity: .98
   padding:
