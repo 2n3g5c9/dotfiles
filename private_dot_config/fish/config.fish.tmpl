@@ -19,30 +19,31 @@ set -gx PATH $HOME/bin $PATH
 fish_add_path /opt/homebrew/bin
 fish_add_path /opt/homebrew/sbin
 
-# Go
-set -g GOPATH $HOME/go
-set -gx PATH $GOPATH/bin $PATH
-
-{{- if eq .chezmoi.hostname "MBP2021" }}
-# Google Cloud SDK
-source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
-
-# Kubernetes
-test -f ~/.kubectl_aliases.fish && source ~/.kubectl_aliases.fish
-{{- end }}
+# Starship
+starship init fish | source
 
 # The Fuck
 thefuck --alias | source
 
-# pnpm
+# zoxide
+zoxide init fish | source
+
+# Programming
+## Go
+set -g GOPATH $HOME/go
+set -gx PATH $GOPATH/bin $PATH
+
+## pnpm
 set -gx PNPM_HOME "/Users/marc/Library/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
-# pnpm end
 
-# zoxide
-zoxide init fish | source
+{{- if eq .chezmoi.hostname "MBP2021" }}
+# Infrastructure
+## Google Cloud SDK
+source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
 
-# Starship
-starship init fish | source
+## Kubernetes
+test -f ~/.kubectl_aliases.fish && source ~/.kubectl_aliases.fish
+{{- end }}
