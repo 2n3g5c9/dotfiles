@@ -28,12 +28,7 @@ import:
   - ~/.config/alacritty/colors/catppuccin-mocha.yml
 
 key_bindings:
-  - { key: Left,     mods: Alt,     chars: "\x1bb"                       }
-  - { key: Right,    mods: Alt,     chars: "\x1bf"                       }
-  - { key: Left,     mods: Command, chars: "\x1bOH",   mode: AppCursor   } # Home
-  - { key: Right,    mods: Command, chars: "\x1bOF",   mode: AppCursor   } # End
-  - { key: Key3,     mods: Alt,     chars: "#"                           }
-  - { key: S,        mods: Alt,     chars: "\x1bs"                       }
+  - { key: Key3, mods: Alt, chars: "#" }
 
 scrolling:
   history: 10000
@@ -47,7 +42,8 @@ window:
   dimensions:
     columns: 150
     lines: 40
-  opacity: .98
+  opacity: .99
+  option_as_alt: Both
   padding:
-    x: 5
-    y: 5
+    x: 12
+    y: 10

@@ -1,0 +1,34 @@
+[core]
+  pager = delta
+
+[delta]
+  navigate = true
+  side-by-side = true
+
+[diff]
+	colorMoved = default
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+[gpg]
+	program = gpg
+
+[init]
+	defaultBranch = main
+
+[interactive]
+  diffFilter = delta --color-only
+
+[merge]
+	conflictstyle = diff3
+
+[pull]
+	rebase = false
+
+[user]
+	name = "{{ .name }}"
+	email = "{{ .email }}"
