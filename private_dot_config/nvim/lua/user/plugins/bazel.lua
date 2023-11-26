@@ -1,4 +1,4 @@
 return {
-  { "google/vim-maktaba", cmd = "Bazel" },
+  { "google/vim-maktaba",   lazy = false },
   { "bazelbuild/vim-bazel", cmd = "Bazel" },
 }
