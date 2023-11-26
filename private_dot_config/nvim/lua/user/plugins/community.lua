@@ -6,6 +6,7 @@ return {
   { import = "astrocommunity.git.blame-nvim" },
   { import = "astrocommunity.git.diffview-nvim" },
   { import = "astrocommunity.pack.go" },
+  { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.programming-language-support.csv-vim" },
   { import = "astrocommunity.programming-language-support.web-tools-nvim" },
 }
